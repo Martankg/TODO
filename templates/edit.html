@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} {{todo.title}} {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class='text-center mt-5'>To Do</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Name of Topic</label>
+                <input type="text" value="{{todo.title}}" required class="form-control"  id="exampleFormControlInput1" placeholder="Name of Topic" name='title'>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Description of Topic</label>
+                <input type="text" required value="{{todo.description}}" class="form-control" id="exampleFormControlInput1" rows="3" name='description'></input>
+            </div>
+            <p style="text-align: center;">
+            <button type="submit"  class="btn btn-primary ">Save</button>
+            <a href="{% url 'main' %}" type="button"  class="btn btn-danger " >back</a>
+            <button onclick="history.back(-1)" type="button"  class="btn btn-danger " >back</button></p>
+        </form>
+    </div>
+{% endblock %}
